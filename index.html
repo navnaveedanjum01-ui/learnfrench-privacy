@@ -82,17 +82,19 @@
       <div class="brand-name">Learn <span>French</span></div>
     </div>
     <h1>Privacy Policy</h1>
-    <p class="dates">Effective and last updated: October 25, 2026</p>
+    <p class="dates">Effective and last updated: October 31, 2026</p>
   </header>
 
   <div class="summary">
     <h2>The short version</h2>
     <ul>
       <li>Learn French works without an account. We do not run our own servers that receive your data.</li>
-      <li>Your progress, saved words, notebook and settings stay on your phone. We never see them.</li>
+      <li>Your progress, saved words, notebook and settings are stored on your phone. We never see them.</li>
       <li>The app is free and shows ads from Google AdMob. Google may use your advertising ID and device information for ads.</li>
       <li>The app needs an internet connection, and it does not work while ads are blocked (for example by Private DNS or an ad-blocking app).</li>
       <li>The app gets a few settings, such as whether ads are on, from Google Firebase Remote Config.</li>
+      <li>The app uses Google Analytics for Firebase to count anonymous usage (for example which screens are opened and lessons completed), without your advertising ID.</li>
+      <li>If you allow notifications, the app sends daily learning reminders (made on your phone) and occasional news through Firebase Cloud Messaging. You can turn them off at any time.</li>
       <li>In the EEA, the UK and Switzerland, you are asked for consent before personalized ads, and you can change your choice at any time.</li>
       <li>We do not sell your personal information.</li>
     </ul>
@@ -106,7 +108,7 @@
       <li><a href="#advertising">Advertising (Google AdMob)</a></li>
       <li><a href="#consent">Consent in the EEA, UK and Switzerland</a></li>
       <li><a href="#connection">Internet connection and ad blockers</a></li>
-      <li><a href="#remote-config">App settings (Firebase Remote Config)</a></li>
+      <li><a href="#remote-config">Google Firebase: settings, usage statistics and messages</a></li>
       <li><a href="#permissions">Permissions</a></li>
       <li><a href="#sharing">Sharing and selling</a></li>
       <li><a href="#retention">Keeping and deleting data</a></li>
@@ -126,13 +128,15 @@
   <section id="information">
     <h2>2. Information the app handles</h2>
     <h3>Your learning progress</h3>
-    <p>Your XP, streak, completed lessons, quiz and game results, the topics you find difficult, saved words, notebook entries, review schedule and app settings are stored only on your phone. They are never sent to us or to Google.</p>
+    <p>Your XP, streak, completed lessons, quiz and game results, the topics you find difficult, saved words, notebook entries, review schedule and app settings are stored only on your phone and are never sent to us. Anonymous usage events, such as finishing a lesson, quiz or game and its score, are counted by Google Analytics for Firebase (see <a href="#remote-config">section 6</a>); your saved words, notebook entries and review schedule are not.</p>
     <h3>Pronunciation audio</h3>
     <p>French words and sentences are spoken by the text-to-speech engine installed on your phone (usually Google’s speech services), using an on-device French voice. The app keeps the generated audio in its own storage on your phone so it plays instantly next time. This audio is not sent to us.</p>
     <h3>Connection checks</h3>
     <p>Because the app needs the internet (see <a href="#connection">section 5</a>), it checks your connection when it starts, when your network changes and when you return to the app. To do this it sends small requests to <code>connectivitycheck.gstatic.com</code> and <code>www.google.com</code> (Google), <code>1.1.1.1</code> (Cloudflare), and Google’s ad servers <code>googleads.g.doubleclick.net</code> and <code>pagead2.googlesyndication.com</code>. These requests contain no personal information; like any internet request, they reveal your IP address to the server. The app also reads your phone’s Private DNS setting so it can tell you if it is blocking ads. That setting is used only on your phone and never sent anywhere.</p>
     <h3>What we do not collect</h3>
-    <p>We do not ask for your name, email address, phone number or any account. We do not collect your contacts, photos, microphone recordings, location (GPS) or messages, and we do not use analytics or crash-reporting services.</p>
+    <p>We do not ask for your name, email address, phone number or any account. We do not collect your contacts, photos, microphone recordings, location (GPS) or messages, and we do not use crash-reporting services. Anonymous usage statistics are described in <a href="#remote-config">section 6</a>.</p>
+    <h3>Daily reminders</h3>
+    <p>If you allow notifications, the app schedules up to three learning reminders a day (for example a word of the day, a short quiz and a streak reminder). They are created on your phone from your progress and nothing is sent to us to make them. You can change their times or turn each one off in Profile &gt; Settings &gt; Reminders, or turn off all notifications for the app in Android Settings.</p>
   </section>
 
   <section id="advertising">
@@ -174,8 +178,14 @@
   </section>
 
   <section id="remote-config">
-    <h2>6. App settings (Firebase Remote Config)</h2>
-    <p>Learn French downloads a few settings from Google Firebase Remote Config, such as whether ads are switched on and which ad units to use. To deliver these settings, Firebase uses a Firebase installation ID (a random identifier for this installation of the app, not linked to you) and basic app and device information. Firebase does not receive your progress or anything you do in your lessons. See <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.</p>
+    <h2>6. Google Firebase: settings, usage statistics and messages</h2>
+    <p>Learn French uses these Google Firebase services. They use a Firebase installation ID (a random identifier for this installation of the app, not linked to your name or account) and basic app and device information, such as the app version, Android version, device model, language and approximate country.</p>
+    <ul>
+      <li><strong>Remote Config</strong> downloads a few settings, such as whether ads are switched on and which ad units to use.</li>
+      <li><strong>Google Analytics for Firebase</strong> records anonymous usage events: which screens are opened, when lessons, quizzes, reviews and games are finished (with scores), whether a notification was opened, your app language, a rough learner level and streak range, and how long and how often the app is used. We use this only to understand how the app is used and to improve it. The app does not send your advertising ID to Analytics, and Analytics data is not used for ad personalization.</li>
+      <li><strong>Firebase Cloud Messaging</strong> delivers occasional messages we send to all learners or to learners of one app language (for example new lessons or a weekend challenge). To do this, the app registers a messaging token and subscribes to general topics for its language.</li>
+    </ul>
+    <p>Firebase does not receive your notebook, saved words or anything you type. See <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.</p>
   </section>
 
   <section id="permissions">
@@ -188,6 +198,8 @@
         <tbody>
           <tr><td>Internet and network state</td><td>To load settings and ads, and to notice when your connection drops or comes back.</td></tr>
           <tr><td>Vibration</td><td>Short vibrations as feedback in some games.</td></tr>
+          <tr><td>Notifications</td><td>To show your daily learning reminders and occasional news. On Android 13 and later the app asks first, after your first lesson; you can say no.</td></tr>
+          <tr><td>Run at startup</td><td>So your scheduled reminders still arrive after the phone restarts or the app is updated.</td></tr>
           <tr><td>Advertising ID and ad services</td><td>Added by the Google Mobile Ads SDK to show and measure ads (see <a href="#advertising">section 3</a>).</td></tr>
           <tr><td>Wake lock, foreground service</td><td>Added by Google’s Firebase and Mobile Ads libraries for their own background work. The app itself does not run background services.</td></tr>
         </tbody>
@@ -205,7 +217,7 @@
     <h2>9. Keeping and deleting data</h2>
     <ul>
       <li><strong>On your phone:</strong> your progress stays until you use <em>Reset all progress</em> (Profile &gt; Settings) or uninstall the app. Uninstalling also removes the saved pronunciation audio.</li>
-      <li><strong>With Google:</strong> Google keeps advertising and Firebase data for the periods described in its policies.</li>
+      <li><strong>With Google:</strong> Google keeps advertising and Firebase data for the periods described in its policies. Analytics usage events are kept for at most 14 months.</li>
       <li><strong>Advertising ID:</strong> you can reset or delete it at any time in Android Settings (usually Settings &gt; Privacy &gt; Ads, or Settings &gt; Google &gt; Ads).</li>
     </ul>
   </section>
@@ -217,7 +229,7 @@
 
   <section id="rights">
     <h2>11. Your rights and choices</h2>
-    <p>Depending on where you live (for example under the EU and UK GDPR or California privacy law), you may have the right to access, correct or delete your personal data, to object to or restrict its use, and to withdraw consent. Where we rely on consent (personalized ads in the EEA, UK and Switzerland), you can withdraw it at any time with <em>Ad privacy choices</em>. Other uses rely on our legitimate interest in providing and funding a free app.</p>
+    <p>Depending on where you live (for example under the EU and UK GDPR or California privacy law), you may have the right to access, correct or delete your personal data, to object to or restrict its use, and to withdraw consent. Where we rely on consent (personalized ads in the EEA, UK and Switzerland), you can withdraw it at any time with <em>Ad privacy choices</em>. Other uses, including anonymous usage statistics, rely on our legitimate interest in providing, improving and funding a free app. You can turn off reminders in Profile &gt; Settings &gt; Reminders, and all notifications from the app in Android Settings.</p>
     <p>Because we do not hold your data, most requests are best made to Google, for example through <a href="https://myadcenter.google.com/">My Ad Center</a> or the tools in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. You can also contact us (<a href="#contact">section 14</a>), and you may complain to your local data protection authority.</p>
   </section>
 
